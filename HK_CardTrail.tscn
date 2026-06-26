@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://t3hkcardtrail2026"]
+
+[sub_resource type="Curve" id="Curve_trail"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.5, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_soul"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.8, 0.9, 1, 0.8, 0.5, 0.6, 1, 0)
+
+[node name="HK_CardTrail" type="Node2D"]
+
+[node name="SoulParticles" type="CPUParticles2D" parent="."]
+amount = 30
+lifetime = 0.6
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+gravity = Vector2(0, -98)
+scale_amount_min = 4.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_trail")
+color_ramp = SubResource("Gradient_soul")
+# 提示: 这是一个散发白色/淡蓝色灵魂粒子的特效。
+# 当卡牌移动时，你可以将这个节点作为卡牌的子节点，或者通过脚本更新其位置。
